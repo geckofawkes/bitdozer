@@ -1,0 +1,81 @@
+﻿<Application 
+    x:Class="Bitdozer.BitDozer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:bd="clr-namespace:Bitdozer"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone">
+
+    <!--Application Resources-->
+    <Application.Resources>
+        <SolidColorBrush x:Key="TagelmoustBrush" Color="RoyalBlue"></SolidColorBrush>           <!-- I dream in colour. -->
+        <SolidColorBrush x:Key="BitDozerBrush" Color="Goldenrod"></SolidColorBrush>                 <!-- -->
+        <SolidColorBrush x:Key="AppTitleBrush" Color="Goldenrod"></SolidColorBrush>
+        <SolidColorBrush x:Key="AppTitleBrush2" Color="Gray"></SolidColorBrush>
+        <SolidColorBrush x:Key="BalanceHeaderBrush" Color="Gray"></SolidColorBrush>
+        <SolidColorBrush x:Key="SendHeaderBrush" Color="DarkRed"></SolidColorBrush>
+        <SolidColorBrush x:Key="RecvHeaderBrush" Color="LightGreen"></SolidColorBrush>
+        <SolidColorBrush x:Key="AddressesHeaderBrush" Color="Magenta"></SolidColorBrush>
+        <SolidColorBrush x:Key="AddressesListBrush" Color="Lavender"></SolidColorBrush>
+        <SolidColorBrush x:Key="AllHeaderBrush" Color="Gray"></SolidColorBrush>
+        <SolidColorBrush x:Key="ReceivedHeaderBrush" Color="DarkGreen"></SolidColorBrush>
+        <SolidColorBrush x:Key="SentHeaderBrush" Color="DarkRed"></SolidColorBrush>
+        <SolidColorBrush x:Key="StatsHeaderBrush" Color="DeepSkyBlue"></SolidColorBrush>
+        <SolidColorBrush x:Key="SettingsHeaderBrush" Color="RoyalBlue"></SolidColorBrush>
+        <SolidColorBrush x:Key="AboutHeaderBrush" Color="WhiteSmoke"></SolidColorBrush>
+        <SolidColorBrush x:Key="AccountsHeaderBrush" Color="Lime"></SolidColorBrush>
+        <LinearGradientBrush x:Key="DonateBrush">
+            <GradientStop Offset="0.01" Color="Red"/>
+            <GradientStop Offset="0.50" Color="Gold" />
+            <GradientStop Offset="1.10" Color="Navy" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="DonateTextBrush">
+            <GradientStop Offset="0.10" Color="Gold"/>
+            <GradientStop Offset="0.33" Color="Red" />
+            <GradientStop Offset="0.50" Color="Gold" />
+            <GradientStop Offset="0.66" Color="RoyalBlue" />
+            <GradientStop Offset="1.00" Color="Gold"/>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="PawsAndClawsBrush" Color="Gold"></SolidColorBrush>        
+        <SolidColorBrush x:Key="StandardBrush" Color="Lime"></SolidColorBrush>
+        <SolidColorBrush x:Key="HighlightBrush" Color="Gold"></SolidColorBrush>        
+        <SolidColorBrush x:Key="DimmedBrush" Color="DarkGray"></SolidColorBrush>
+        <SolidColorBrush x:Key="DedicationTextBrush" Color="Gold"></SolidColorBrush>
+        <SolidColorBrush x:Key="CreditsTextBrush" Color="Gray"></SolidColorBrush>
+        <SolidColorBrush x:Key="BackgroundBrush" Color="Black"></SolidColorBrush>  
+        <SolidColorBrush x:Key="BalanceBrush" Color="Magenta"></SolidColorBrush>   
+        <SolidColorBrush x:Key="AccountBrush" Color="RoyalBlue"></SolidColorBrush>
+        <SolidColorBrush x:Key="DefaultAccountBrush" Color="Silver"></SolidColorBrush>
+        <SolidColorBrush x:Key="CurrentAccountBrush" Color="Gold"></SolidColorBrush>
+        <LinearGradientBrush x:Key="RiddleBrush">
+            <GradientStop Offset="0.05" Color="Magenta"></GradientStop>
+            <GradientStop Offset="0.10" Color="Silver"></GradientStop>
+            <GradientStop Offset="0.33" Color="Lime"></GradientStop>
+            <GradientStop Offset="0.50" Color="Gold"></GradientStop>
+            <GradientStop Offset="0.66" Color="Magenta"></GradientStop>
+            <GradientStop Offset="1.00" Color="Silver"></GradientStop>
+        </LinearGradientBrush>
+
+        <SolidColorBrush x:Key="AccountHighlighter" Color="Magenta"></SolidColorBrush>
+        <SolidColorBrush x:Key="AmountHighlighter" Color="Lime"></SolidColorBrush>
+        <SolidColorBrush x:Key="SentAmountHighlighter" Color="Red"></SolidColorBrush>
+        <SolidColorBrush x:Key="DateHighlighter" Color="LightGray"></SolidColorBrush>
+        <SolidColorBrush x:Key="TypeHighlighter" Color="Cyan"></SolidColorBrush>
+        <SolidColorBrush x:Key="StatHighlighter" Color="LightSkyBlue"></SolidColorBrush>
+        <SolidColorBrush x:Key="ConfirmationsHighlighter" Color="LightBlue"></SolidColorBrush>
+        <SolidColorBrush x:Key="TransactionHighlighter" Color="DarkGoldenrod"></SolidColorBrush>
+
+        <!-- IValueConverter Resources -->        
+        <bd:BitcoinValueFormatter x:Key="BitcoinValueFormatter"></bd:BitcoinValueFormatter> 
+        <bd:XAccountHighlighter x:Key="XAccountHighlighter"></bd:XAccountHighlighter>
+        <bd:AmountValueConverter x:Key="AmountValueConverter"></bd:AmountValueConverter>
+    </Application.Resources>
+
+    <Application.ApplicationLifetimeObjects>
+        <!--Required object that handles lifetime events for the application-->
+        <shell:PhoneApplicationService 
+            Launching="Application_Launching" Closing="Application_Closing" 
+            Activated="Application_Activated" Deactivated="Application_Deactivated"/>
+    </Application.ApplicationLifetimeObjects>
+
+</Application>

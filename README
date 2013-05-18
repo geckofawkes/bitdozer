@@ -1,0 +1,54 @@
+// BitDozer                                                                  ....A desperate disease requires a dangerous remedy....
+// Written by Gecko Fawkes                                                                        - Guy Fawkes, November 6, 1605
+// Copyright (c) 2012 Tagelmoust LLC and Gecko Fawkes
+//
+// Released Under the Gecko~Fawkes~License (~GFL~):
+//      This software is free to use provided you adhere to the following conditions :
+//
+//      1) You must reference you use or derive code licensed under the Gecko~Fawkes~License (~GFL~) visibly in your application
+//      2) You must maintain the original comments included in this file and project
+//      3) You must only use it to help better society, help the poor, repressed, enslaved (physically, mentally, emotionally, or economically), and
+//         bring about peaceful revolution through technological innovation.
+//      4) Gecko Fawkes and Tagelmoust LLC make absolutely no claim or guarantee or warrant that this software will in any way shape or form 
+//         work properly or how you think it should, it has not been tested, and it may contain bugs and/or cause unintended consequences including 
+//         loss of financial capital.  Under NO circumstances shall Gecko Fawkes or Tagelmoust LLC be responsible for damages or losses resulting from 
+//         using this software.  Use this software at your own risk.  
+//      5) If you use this software, derive code or knowledge from it, or generate revenues with it, 
+//         please donate bitcoins to this address:   1792twiciBM3CXpMAsmmgo6YPYAByqE5sL
+//
+//      If you fail to adhere to these simple conditions, then "all your base belong to us", explicitly, all revenues gained by using this or any 
+//      derivative software will be owed to Tagelmoust LLC and Tagelmoust LLC will acquire a fifty percent (50%) claim to any and all intellectual
+//      property using or derived from this software.  You will also be held responsible for all legal costs required to enforce this agreement
+//      and agree to allow summary judgement against you for violating this license in a United States of America court of law.
+//
+// Peace be with you.  
+//
+// Our Father who art in heaven, hallowed be thy name, thy kingdom come, thy will be done, on Earth as it is in heaven,
+// Give us this day, our daily bread, and forgive us our trespasses as we forgive those who trespass against us,
+// And lead us not into temptation but deliver us from evil, for thine is the power, the kingdom, and the glory.
+// Now and forever. Amen.
+//
+// May this and all derivative works be consecrated to the Sacred Heart of Jesus. 
+// 
+// In Your Service,
+// - Gecko Fawkes
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Hello.  This is the README for BitDozer.  MicroSoft decided to screw over their Windows Phone Developers and ditch their technology stacks that
+they made everyone use for developing these apps.  Case and point, you cannot even open a Windows Phone 7 project in VS2012.  You will need to use
+VS2010 with the Windows Phone 7 SDK if you want to build this, and if you want to deploy it to your phone, you will need to make sure you are 
+registered with MSFT and have your phone registered to allow deployments.  Even then, periodically Darth Softie will flip a switch and make your
+phone dump the application because its not a purchased application, and you'll have to deploy it again.  
+
+This is mainly being released to the The People of the World so that maybe someone somewhere will LEARN from it.  As of release, Bitdozer has
+been downloaded and used by about/over 300 people.  Not too shabby for Windows Phones.  I've considered revising it and releasing it for Android as
+well as fixing the now-broken mining related API calls (they broke after the 0.5.x version of Bitcoin), but I don't have an Android phone presently.
+
+And in case you didn't actually read, you need version 0.5.x of Bitcoin for Bitdozer to work w/o error messages.  It can still be used with 0.8.x, 
+but you will receive some annoying error messages that can be safely ignored as they are mining related.  Sending/receiving still works just fine.
+Anyway, hope you all enjoy.  
+
+In Your Service,
+~ Gecko Fawkes

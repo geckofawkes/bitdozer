@@ -1,0 +1,353 @@
+﻿<phone:PhoneApplicationPage xmlns:my="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"  
+    x:Class="Bitdozer.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:bd="clr-namespace:Bitdozer"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768" 
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait" Background="Black"
+    shell:SystemTray.IsVisible="True" xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
+
+    <phone:PhoneApplicationPage.Resources>
+    </phone:PhoneApplicationPage.Resources>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar x:Name="abAppBar" IsVisible="False" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton x:Name="ibRecycle" IconUri="/Assets/Recycle.png" Text="Refresh" Click="ApplicationBarIconButton_Click_2"/>
+            <shell:ApplicationBarIconButton x:Name="ibAccount" IconUri="/Assets/Tag-Blue.png" Text="New Acct" Click="ApplicationBarIconButton_Click_1"/>
+            <shell:ApplicationBarIconButton x:Name="ibAddress" IconUri="/Assets/Tag-Blue_Add.png" Text="New Addr" Click="ApplicationBarIconButton_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <StackPanel>
+            <my:AdControl x:Name="acAds" Width="480" Height="80" Visibility="Collapsed" IsAutoRefreshEnabled="True" IsEnabled="False" BorderBrush="{StaticResource RiddleBrush}" Foreground="{StaticResource RiddleBrush}" />
+            <!--Pivot Control-->
+            <controls:Pivot x:Name="pvtBitDozer" Foreground="{Binding Source={StaticResource StandardBrush}}" Margin="0,0,-42,0">
+                <controls:Pivot.Title>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="linkBitDozer" VerticalAlignment="Center" Text="BitDozer" Foreground="{StaticResource AppTitleBrush}" FontSize="24" FontStyle="Italic" Tap="linkBitDozer_Tap"></TextBlock>
+                            <TextBlock VerticalAlignment="Center" Text=" by " Foreground="{StaticResource AppTitleBrush2}" FontSize="24" FontStyle="Italic"></TextBlock>
+                            <TextBlock x:Name="linkTagelmoust" VerticalAlignment="Center" Text="Tagelmoust" Foreground="{StaticResource TagelmoustBrush}" FontSize="24" FontStyle="Italic" Tap="linkTagelmoust_Tap"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock VerticalAlignment="Center" Text="Wallet Balance:" FontSize="20" Foreground="{StaticResource BalanceBrush}"></TextBlock>
+                            <TextBlock VerticalAlignment="Center" x:Name="tbWalletBalance" DataContext="MainPage" Text="{Binding CurrentAccountDescriptor.Balance}" FontSize="20" Foreground="{StaticResource BalanceBrush}"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </controls:Pivot.Title>
+
+                <!--Login Pivot -->
+                <controls:PivotItem x:Name="piLogin">
+                    <controls:PivotItem.Header>
+                        <TextBlock Text="login" Foreground="{StaticResource SettingsHeaderBrush}"></TextBlock>
+                    </controls:PivotItem.Header>
+                    <StackPanel>
+                        <TextBlock Text="Server Url:"></TextBlock>
+                        <TextBox x:Name="tbServerUrl" Text=""></TextBox>
+                        <TextBlock Text=""></TextBlock>
+                        <TextBlock Text="UserName:"></TextBlock>
+                        <TextBox x:Name="tbUserName" Text=""></TextBox>
+                        <TextBlock Text=""></TextBlock>
+                        <TextBlock Text="Password:"></TextBlock>
+                        <PasswordBox x:Name="pbPassword" Password=""></PasswordBox>
+                        <TextBlock Text=""></TextBlock>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button x:Name="btnConnect" Content="Connect" Click="btnConnect_Click"></Button>
+                            <Button x:Name="btnDisconnect" Content="Disconnect" Click="btnDisconnect_Click"></Button>
+                        </StackPanel>
+                        <StackPanel x:Name="spTrial" HorizontalAlignment="Center" Visibility="Collapsed">
+                            <TextBlock FontSize="18" TextWrapping="Wrap" HorizontalAlignment="Center" Text="Thank you for trying BitDozer!"></TextBlock>
+                            <TextBlock FontSize="18" TextWrapping="Wrap" HorizontalAlignment="Center" Text="Full versions are ad-free! :)"></TextBlock>
+                        </StackPanel>
+                        <StackPanel VerticalAlignment="Bottom">
+                            <TextBlock FontSize="16" HorizontalAlignment="Center" Text="www.tagelmoust.com/bitdozer" Tap="linkBitDozer_Tap"></TextBlock>
+                            <TextBlock FontSize="16" HorizontalAlignment="Center" Foreground="RoyalBlue" Text="Help End Economic Slavery"></TextBlock>
+                            <TextBlock x:Name="geckofawkes" FontSize="12" HorizontalAlignment="Center" Foreground="Crimson" Text="www.geckofawkes.com " Tap="geckofawkes_Tap"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </controls:PivotItem>
+
+                <controls:PivotItem x:Name="piSend">
+                    <controls:PivotItem.Header>
+                        <TextBlock Text="send" Foreground="{StaticResource SendHeaderBrush}"/>
+                    </controls:PivotItem.Header>
+                    <ScrollViewer>
+                        <StackPanel>
+                            <!--<TextBlock Text="Send From Account(Address):"></TextBlock>
+                            <ListBox x:Name="lbSendFromAccount" Height="128" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto"></ListBox>-->
+                            <!--<toolkit:ListPicker Name="lpSendFromAddress" ItemCountThreshold="0" >-->
+                            <!--<toolkit:ListPickerItem Content="&lt;new address&gt;"></toolkit:ListPickerItem>-->
+                            <!--</toolkit:ListPicker> -->
+                            <TextBlock Text="Send To:"></TextBlock>
+                            <!--                        <toolkit:AutoCompleteBox x:Name="acbSendToAddress" IsTextCompletionEnabled="True" FilterMode="Custom"> </toolkit:AutoCompleteBox> -->
+                            <TextBox x:Name="tbSendToAddress" FontSize="22" Text="1LmJsN7ooV9stPkbAbt2wJH4XQ4y4mKkCV"></TextBox>
+                            <TextBlock Text="Amount:"></TextBlock>
+                            <!--                        <StackPanel Orientation="Horizontal"> -->
+                            <TextBox x:Name="tbSendAmount" Text="00000000.00000000"></TextBox>
+                            <Button x:Name="btnSendBitCoins" Content="Send Bitcoins!" Click="btnSendBitCoins_Click" Foreground="{StaticResource DonateBrush}" BorderBrush="{StaticResource RiddleBrush}"></Button>
+                            <!--                        </StackPanel> -->
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="Comment:"></TextBlock>
+                            <TextBox x:Name="tbComment"></TextBox>
+                        </StackPanel>
+                    </ScrollViewer>
+                </controls:PivotItem>
+
+                <controls:PivotItem x:Name="piRecv">
+                    <controls:PivotItem.Header>
+                        <TextBlock Text="recv" Foreground="{StaticResource RecvHeaderBrush}"/>
+                    </controls:PivotItem.Header>
+                    <ScrollViewer>
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="124"></ColumnDefinition>
+                                    <ColumnDefinition Width="336"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Text="Text/SMS #:"></TextBlock>
+                                <TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" x:Name="tbRecvNumber" Text="3335557777"></TextBox>
+                                <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Text="Requester:"></TextBlock>
+                                <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" x:Name="tbRecvName" Text="Your Name"></TextBox>
+
+                                <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Text="Amount:"></TextBlock>
+                                <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBox VerticalAlignment="Center" x:Name="tbRecvAmount" Text="00.00000000"></TextBox>
+                                    <!-- extra zero to the left of the point for those with bigger fingers! -->
+                                    <TextBlock VerticalAlignment="Center" Text="BTC" Margin="4,0,0,0"></TextBlock>
+                                </StackPanel>
+                            </Grid>
+                            <TextBlock Text="To Address:"></TextBlock>
+                            <ListBox x:Name="lbRecvAddress" Height="128" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontSize="14"></ListBox>
+
+                            <Button x:Name="btnRecvBitCoins" Content="Request Bitcoins!" Click="btnRecvBitcoins_Click" Foreground="{StaticResource AccountsHeaderBrush}" BorderBrush="{StaticResource RiddleBrush}"></Button>
+                            <!--                        </StackPanel> -->
+                        </StackPanel>
+                    </ScrollViewer>
+                </controls:PivotItem>
+
+                <controls:PivotItem x:Name="piAccounts">
+                    <controls:PivotItem.Header>
+                        <TextBlock Text="accounts" Foreground="{StaticResource AccountsHeaderBrush}"></TextBlock>
+                    </controls:PivotItem.Header>
+                    <StackPanel Orientation="Vertical">
+                        <bd:CurrentAccount x:Name="caAccounts"></bd:CurrentAccount>
+                        <ListBox x:Name="AccountsListBox" Margin="0,0,-12,0">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="0,0,0,17">
+                                        <!-- The button used the following :
+                                    Foreground="{Binding BindsDirectlyToSource=True, Converter={StaticResource AccountHighlighter}, ConverterParameter={StaticResource BindsDirectlyToSource}}"
+                                    This no longer works in 7.1. :(
+                                    -->
+                                        <Button Content="{Binding Account}" Margin="12,0,0,0" Click="SetCurrAccount_Click" Tag="{Binding Account}" Foreground="LightGreen" BorderBrush="LightGreen">
+                                            <toolkit:ContextMenuService.ContextMenu>
+                                                <toolkit:ContextMenu>
+                                                    <toolkit:MenuItem Header="Set Current Account" Tag="{Binding Account}" Click="setAccount_Click" />
+                                                </toolkit:ContextMenu>
+                                            </toolkit:ContextMenuService.ContextMenu>
+                                        </Button>
+                                        <TextBlock Text="{Binding Balance, Converter={StaticResource BitcoinValueFormatter}, ConverterParameter=Balance}" Foreground="{StaticResource BalanceBrush}" TextWrapping="NoWrap" Margin="12,-6,0,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </controls:PivotItem>
+
+                <!--Pivot item two-->
+                <controls:PivotItem x:Name="piAddresses">
+                    <controls:PivotItem.Header>
+                        <TextBlock Text="addresses" Foreground="{StaticResource AddressesHeaderBrush}"/>
+                    </controls:PivotItem.Header>
+                    <ListBox x:Name="AddressesListBox" Margin="0,0,-12,0" Foreground="{StaticResource AddressesListBrush}" SelectionChanged="AddressesListBox_SelectionChanged" FontSize="16">
+                    </ListBox>
+                </controls:PivotItem>
+
+                <controls:PivotItem x:Name="piAll">
+                    <controls:PivotItem.Header>
+                        <TextBlock Text="all" Foreground="{StaticResource AllHeaderBrush}"></TextBlock>
+                    </controls:PivotItem.Header>
+                    <!--Double line list with text wrapping-->
+                    <ListBox x:Name="AllListBox" Margin="0,0,-12,0">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,0,0,7" Width="432">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Foreground="{StaticResource AccountHighlighter}" VerticalAlignment="Center" Text="{Binding Account}"></TextBlock>
+                                        <TextBlock Foreground="{StaticResource AccountHighlighter}" VerticalAlignment="Center" Text="   ("></TextBlock>
+                                        <TextBlock Foreground="{StaticResource AccountHighlighter}" VerticalAlignment="Center" FontSize="13" Text="{Binding Address}"></TextBlock>
+                                        <TextBlock Foreground="{StaticResource AccountHighlighter}" VerticalAlignment="Center" Text=")"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Foreground="{StaticResource DateHighlighter}" Text="Date/Time:   "></TextBlock>
+                                        <TextBlock Foreground="{StaticResource DateHighlighter}" Text="{Binding TxDate}"></TextBlock>
+                                        <TextBlock Foreground="{StaticResource TypeHighlighter}" Text="   Type:   "></TextBlock>
+                                        <TextBlock Foreground="{StaticResource TypeHighlighter}" Text="{Binding Category}"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Foreground="{StaticResource AmountHighlighter}" Text="Amount:   "></TextBlock>
+                                        <TextBlock Foreground="{Binding Amount, Converter={StaticResource AmountValueConverter}}" Text="{Binding AmountString}"></TextBlock>
+                                        <TextBlock Foreground="{StaticResource ConfirmationsHighlighter}" Text=" ["></TextBlock>
+                                        <TextBlock Foreground="{StaticResource ConfirmationsHighlighter}" Text="{Binding Confirmations}"></TextBlock>
+                                        <TextBlock Foreground="{StaticResource ConfirmationsHighlighter}" Text="]"></TextBlock>
+                                    </StackPanel>
+                                    <TextBlock Foreground="{StaticResource TransactionHighlighter}" Text="Txn ID:   "></TextBlock>
+                                    <TextBlock Foreground="{StaticResource TransactionHighlighter}" VerticalAlignment="Center" Text="{Binding TXID}" FontSize="14"></TextBlock>                                        
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </controls:PivotItem>
+
+                <controls:PivotItem x:Name="piReceived">
+                    <controls:PivotItem.Header>
+                        <TextBlock Text="received" Foreground="{StaticResource ReceivedHeaderBrush}"></TextBlock>
+                    </controls:PivotItem.Header>
+                    <ListBox x:Name="ReceivedListBox" Margin="0,0,-12,0">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,0,0,17" Width="432" Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Foreground="{StaticResource AccountHighlighter}" Text="{Binding Account}"></TextBlock>
+                                        <TextBlock Foreground="{StaticResource AccountHighlighter}" Text="   ("></TextBlock>
+                                        <TextBlock Foreground="{StaticResource AccountHighlighter}" VerticalAlignment="Center" FontSize="14" Text="{Binding Address}"></TextBlock>
+                                        <TextBlock Foreground="{StaticResource AccountHighlighter}" Text=")"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Foreground="{StaticResource AmountHighlighter}" Text="Amount:   "></TextBlock>
+                                        <TextBlock Foreground="{StaticResource AmountHighlighter}" Text="{Binding AmountString}"></TextBlock>
+                                        <TextBlock Foreground="{StaticResource ConfirmationsHighlighter}" Text=" ["></TextBlock>
+                                        <TextBlock Foreground="{StaticResource ConfirmationsHighlighter}" Text="{Binding Confirmations}"></TextBlock>
+                                        <TextBlock Foreground="{StaticResource ConfirmationsHighlighter}" Text="]"></TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </controls:PivotItem>
+
+                <controls:PivotItem x:Name="piSent">
+                    <controls:PivotItem.Header>
+                        <TextBlock Text="sent" Foreground="{StaticResource SentHeaderBrush}"></TextBlock>
+                    </controls:PivotItem.Header>
+                    <ListBox x:Name="SentListBox" Margin="0,0,-12,0">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,0,0,17" Width="432">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Foreground="{StaticResource AccountHighlighter}" Text="{Binding Account}"></TextBlock>
+                                        <TextBlock Foreground="{StaticResource AccountHighlighter}" Text="   ("></TextBlock>
+                                        <TextBlock Foreground="{StaticResource AccountHighlighter}" VerticalAlignment="Center" FontSize="14" Text="{Binding Address}"></TextBlock>
+                                        <TextBlock Foreground="{StaticResource AccountHighlighter}" Text=")"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Foreground="{StaticResource DateHighlighter}" Text="Date/Time:   "></TextBlock>
+                                        <TextBlock Foreground="{StaticResource DateHighlighter}" Text="{Binding TxDate}"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Foreground="{StaticResource SentAmountHighlighter}" Text="Amount:   "></TextBlock>
+                                        <TextBlock Foreground="{StaticResource SentAmountHighlighter}" Text="{Binding AmountString}"></TextBlock>
+                                        <TextBlock Foreground="{StaticResource ConfirmationsHighlighter}" Text=" ["></TextBlock>
+                                        <TextBlock Foreground="{StaticResource ConfirmationsHighlighter}" Text="{Binding Confirmations}"></TextBlock>
+                                        <TextBlock Foreground="{StaticResource ConfirmationsHighlighter}" Text="]"></TextBlock>
+                                    </StackPanel>
+                                    <TextBlock Foreground="{StaticResource TransactionHighlighter}" Text="Txn ID:   "></TextBlock>
+                                    <TextBlock Foreground="{StaticResource TransactionHighlighter}" VerticalAlignment="Center" FontSize="14" Text="{Binding TXID}"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </controls:PivotItem>
+
+                <controls:PivotItem x:Name="piStats" Foreground="{StaticResource StatHighlighter}">
+                    <controls:PivotItem.Header>
+                        <TextBlock Text="stats" Foreground="{StaticResource StatsHeaderBrush}"></TextBlock>
+                    </controls:PivotItem.Header>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Version: "></TextBlock>
+                            <TextBlock x:Name="tbVersion" Text="0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Connections: "></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock x:Name="tbConnections" Text="?"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Difficulty:"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock x:Name="tbDifficulty" Text="?"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Current/Blocks:"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock x:Name="tbCurrent" Text="?"></TextBlock>
+                            <TextBlock Text=" / "></TextBlock>
+                            <TextBlock x:Name="tbBlocks" Text="?"></TextBlock>
+                        </StackPanel>
+                        <!--<StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Hashes/sec: "></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock x:Name="tbHashes" Text="?"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Test Net:"></TextBlock>
+                            <TextBlock x:Name="lTestNet" Text="No"></TextBlock>
+                        </StackPanel>-->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Pay Tx Fee:"></TextBlock>
+                            <TextBlock x:Name="lPayTxFee" Text="0.00000000 BTC"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </controls:PivotItem>
+
+                <controls:PivotItem x:Name="piAbout">
+                    <controls:PivotItem.Header>
+                        <TextBlock x:Name="piAboutHeader" Text="about" Foreground="{StaticResource AboutHeaderBrush}"></TextBlock>
+                    </controls:PivotItem.Header>
+                    <ScrollViewer>
+                        <StackPanel>
+                            <TextBlock Text="BitDozer" Foreground="{StaticResource BitDozerBrush}" HorizontalAlignment="Center" FontSize="64" Tap="linkBitDozer_Tap"></TextBlock>
+                            <TextBlock Text="v.1" Foreground="{StaticResource CreditsTextBrush}" HorizontalAlignment="Center"></TextBlock>
+                            <TextBlock Text="Written by Gecko Fawkes" Foreground="{StaticResource CreditsTextBrush}" HorizontalAlignment="Center" Tap="geckofawkes_Tap"></TextBlock>
+                            <TextBlock HorizontalAlignment="Center" Text="Copyright © 2011-2012 Tagelmoust LLC" Foreground="{StaticResource TagelmoustBrush}" FontSize="16" Tap="linkTagelmoust_Tap"></TextBlock>
+                            <TextBlock HorizontalAlignment="Center" Text="All Rights Reserved" Foreground="{StaticResource TagelmoustBrush}" FontSize="14"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Image x:Name="iGadgetGirl" Source="/Assets/GadgetGirl.png" Height="64" Width="64" HorizontalAlignment="Left" MouseLeftButtonUp="iGadgetGirl_MouseLeftButtonUp"></Image>
+                                <TextBlock Text="                         "></TextBlock>
+                                <Image x:Name="iSacredHeart" Source="/Assets/SacredHeart.png" Height="64" Width="64" HorizontalAlignment="Center" MouseLeftButtonUp="iSacredHeart_MouseLeftButtonUp"></Image>
+                                <TextBlock Text="                           "></TextBlock>
+                                <Image x:Name="iGeckoFawkes" Source="/Assets/GuidoFawkes.png" Stretch="Fill" Height="64" Width="42" HorizontalAlignment="Right" MouseLeftButtonUp="iGeckoFawkes_MouseLeftButtonUp"></Image>
+                            </StackPanel>
+                            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="If you like this app, please donate to:" Foreground="{StaticResource DonateBrush}"></TextBlock>
+                            <Button x:Name="btnDonate" Content="1LmJsN7ooV9stPkbAbt2wJH4XQ4y4mKkCV" Width="420" FontSize="18" FontWeight="Bold" BorderBrush="{StaticResource DonateBrush}" Foreground="{StaticResource DonateTextBrush}" Click="btnDonate_Click"></Button>
+                            <TextBlock HorizontalAlignment="Center" Text="Technical Support: support@tagelmoust.com" Tap="linkTagelmoust_Tap"/>
+                            <TextBlock HorizontalAlignment="Center" Text=" "></TextBlock>
+                            <Image x:Name="iDedications" Source="/Assets/PawSeal.png" Height="128" Width="64" HorizontalAlignment="Center" MouseLeftButtonUp="iDedications_MouseLeftButtonUp"></Image>
+                        </StackPanel>
+                    </ScrollViewer>
+                </controls:PivotItem>
+            </controls:Pivot>
+        </StackPanel>
+    </Grid>
+</phone:PhoneApplicationPage>

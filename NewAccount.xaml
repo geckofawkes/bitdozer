@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="Bitdozer.NewAccount"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="696" d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text=" "></TextBlock>
+            <TextBlock Foreground="{StaticResource AccountsHeaderBrush}" Text="Create New Account"></TextBlock>
+            <TextBlock Text=" "></TextBlock>
+            <TextBlock Foreground="{StaticResource AccountsHeaderBrush}" Text="Account Name:"></TextBlock>
+            <TextBox Text="" x:Name="tbNewAccountName"></TextBox>
+            <TextBlock Text=" "></TextBlock>
+            <Button x:Name="btnCreateAccount" Content="Create Account" Click="btnCreateAccount_Click" BorderBrush="DarkGoldenrod"></Button>
+            <Button x:Name="btnCancel" Content="Cancel" Click="btnCancel_Click" BorderBrush="Silver"></Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

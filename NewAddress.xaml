@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="Bitdozer.NewAddress"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="696" d:DesignWidth="480">
+    
+    <Grid x:Name="LayoutRoot">
+        <Grid.Resources>
+        <Style TargetType="ComboBoxItem" x:Key="accountsStyle" >
+            <Setter Property="Foreground" Value="RoyalBlue" />
+            <Setter Property="FontStyle" Value="Italic" />
+        </Style>
+        </Grid.Resources>
+        
+        <StackPanel>
+            <TextBlock Text=" "></TextBlock>
+            <TextBlock Foreground="{StaticResource AddressesHeaderBrush}" Text="New Address"></TextBlock>
+            <TextBlock Text=" "></TextBlock>
+            <TextBlock Foreground="{StaticResource AccountsHeaderBrush}" Text="Account:"></TextBlock>
+            <ComboBox x:Name="cbxAccount" Background="Transparent" ItemContainerStyle="{StaticResource accountsStyle}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="{Binding Account}"></TextBlock>
+                            <TextBlock Text=" [" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Foreground="{Binding Balance, Converter={StaticResource AmountValueConverter}}" VerticalAlignment="Center" Text="{Binding Balance, Converter={StaticResource BitcoinValueFormatter}, ConverterParameter=Balance}"></TextBlock>
+                            <TextBlock Text="]" VerticalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>                    
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Text=" "></TextBlock>
+            <Button x:Name="btnCreateAddress" Content="Create Address" Click="btnCreateAddress_Click" BorderBrush="DarkGoldenrod"></Button>
+            <Button x:Name="btnCancel" Content="Cancel" Click="btnCancel_Click" BorderBrush="Silver"></Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

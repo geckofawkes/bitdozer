@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="Bitdozer.Dedications"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:e="clr-namespace:System.Windows.Media.Effects;assembly=System.Windows"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="800" d:DesignWidth="480">
+
+    <Canvas x:Name="LayoutRoot" MouseLeftButtonUp="LayoutRoot_MouseLeftButtonUp" >
+        <Image x:Name="iDedications" Source="/Assets/PawSeal.png" Stretch="Fill" Canvas.ZIndex="0" Height="780" Width="480" Canvas.Top="32"></Image>
+        <Canvas x:Name="cSoftener" Width="480" Height="800" Canvas.ZIndex="5" Background="#00FFFFFF">
+        </Canvas>
+        <StackPanel Canvas.ZIndex="10">
+            <Canvas Width="480" Height="780">
+                <StackPanel Background="#11333333" Width="480" Height="800">
+                    <TextBlock Text=" "/>
+                    <TextBlock Text=" "/>
+                    <TextBlock Text=" "/>
+                    <TextBlock HorizontalAlignment="Center" FontStyle="Italic" FontWeight="ExtraBold" Foreground="{StaticResource DedicationTextBrush}" Text="Dedicated To:"></TextBlock>
+                    <TextBlock HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Foreground="{StaticResource DedicationTextBrush}" Text="My Parents"></TextBlock>
+                    <TextBlock HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Foreground="{StaticResource DedicationTextBrush}" Text="My Sister"></TextBlock>
+                    <TextBlock HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Foreground="{StaticResource DedicationTextBrush}" Text="Gadget Girl"></TextBlock>
+                    <TextBlock HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Foreground="{StaticResource DedicationTextBrush}" Text="StlBlues"></TextBlock>
+                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" Foreground="{StaticResource DedicationTextBrush}" Text="Colonel T.I.Sharpe"></TextBlock>
+                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" Foreground="{StaticResource DedicationTextBrush}" Text="Satoshi Nakamoto"></TextBlock>
+                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" Foreground="{StaticResource DedicationTextBrush}" Text="Konstantin Ineshin"></TextBlock>
+                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" Foreground="{StaticResource DedicationTextBrush}" Text="Terence Tsang"></TextBlock>
+                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" Foreground="{StaticResource DedicationTextBrush}" Text="Guy Fawkes"></TextBlock>
+                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" Foreground="{StaticResource DedicationTextBrush}" Text="Anonymous"></TextBlock>
+                    <TextBlock Text=" "/>
+                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontWeight="ExtraBold" Foreground="{StaticResource PawsAndClawsBrush}" Text="Paws and Claws"></TextBlock>
+                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontWeight="ExtraBold" Foreground="{StaticResource PawsAndClawsBrush}" Text="Dedications:"></TextBlock>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="240"></ColumnDefinition>
+                            <ColumnDefinition Width="240"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" FontSize="18" HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Foreground="{StaticResource PawsAndClawsBrush}" Text="Homer"></TextBlock>
+                        <TextBlock Grid.Row="0" Grid.Column="1" FontSize="18" HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Foreground="{StaticResource PawsAndClawsBrush}" Text="Rocco"></TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="0" FontSize="18" HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Foreground="{StaticResource PawsAndClawsBrush}" Text="Sydney"></TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="1" FontSize="18" HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Foreground="{StaticResource PawsAndClawsBrush}" Text="Lestat"></TextBlock>
+                        <TextBlock Grid.Row="2" Grid.Column="0" FontSize="18" HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Foreground="{StaticResource PawsAndClawsBrush}" Text="Mr.P.C."></TextBlock>
+                        <TextBlock Grid.Row="2" Grid.Column="1" FontSize="18" HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Foreground="{StaticResource PawsAndClawsBrush}" Text="Beauregard"></TextBlock>
+                        <TextBlock Grid.Row="3" Grid.Column="0" FontSize="18" HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Foreground="{StaticResource PawsAndClawsBrush}" Text="Yang"></TextBlock>
+                        <TextBlock Grid.Row="3" Grid.Column="1" FontSize="18" HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Foreground="{StaticResource PawsAndClawsBrush}" Text="Princess"></TextBlock>
+                        <TextBlock Grid.Row="4" Grid.Column="0" FontSize="18" HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Foreground="{StaticResource PawsAndClawsBrush}" Text="Romeo"></TextBlock>
+                        <TextBlock Grid.Row="4" Grid.Column="1" FontSize="18" HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Foreground="{StaticResource PawsAndClawsBrush}" Text="Juliet"></TextBlock>
+                        <TextBlock Grid.Row="5" Grid.Column="0" FontSize="18" HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Foreground="{StaticResource PawsAndClawsBrush}" Text="Brick"></TextBlock>
+                        <TextBlock Grid.Row="5" Grid.Column="1" FontSize="18" HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Foreground="{StaticResource PawsAndClawsBrush}" Text="Cawfee"></TextBlock>
+                        <TextBlock Grid.Row="6" Grid.Column="0" FontSize="18" HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Foreground="{StaticResource PawsAndClawsBrush}" Text="Rascal"></TextBlock>
+                        <TextBlock Grid.Row="6" Grid.Column="1" FontSize="18" HorizontalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Foreground="{StaticResource PawsAndClawsBrush}" Text="Jeffrey"></TextBlock>
+                    </Grid>
+                    <StackPanel>
+                        <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontWeight="ExtraBold" Foreground="{StaticResource PawsAndClawsBrush}" Text="Group Dedications:"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" Foreground="{StaticResource DedicationTextBrush}" Text="The 99%"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" Foreground="{StaticResource DedicationTextBrush}" Text="Occupy Wall Street"></TextBlock>
+                    </StackPanel>
+                    <Image x:Name="iSacredHeart" Source="/Assets/SacredHeart.png" Height="64" Width="64" HorizontalAlignment="Center"></Image>
+                </StackPanel>
+            </Canvas>
+        </StackPanel>
+    </Canvas>
+</UserControl>
